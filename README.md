@@ -78,17 +78,7 @@ python run_parallel.py imo2025_p1.txt -n 15 -o "focus_on_geometry,use_induction"
 ```
 
 ## Problem File Format
-
-Create a text file containing the IMO problem statement. The file should contain:
-- Clear problem description
-- Any given conditions or constraints
-- What needs to be proven or found
-
-**Example problem file (`imo2025_p1.txt`):**
-```
-Problem 1. Let ABC be a triangle with AB = AC. Let D be a point on the side BC such that BD = 2DC. 
-Prove that the angle bisector of angle BAC passes through the midpoint of AD.
-```
+See the `problems` folder.
 
 ## Output and Logging
 

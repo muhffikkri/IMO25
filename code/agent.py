@@ -119,12 +119,6 @@ self_improvement_prompt = """
 You have an opportunity to improve your solution. Please review your solution carefully. Correct errors and fill justification gaps if any. Your second round of output should strictly follow the instructions in the system prompt.
 """
 
-check_verification_prompt = """
-Can you carefully review each item in your list of findings? Are they valid or overly strict? An expert grader must be able to distinguish between a genuine flaw and a concise argument that is nonetheless sound, and to correct their own assessment when necessary.
-
-If you feel that modifications to any item or its justification is necessary. Please produce a new list. In your final output, please directly start with **Summary** (no need to justify the new list).
-"""
-
 correction_prompt = """
 Below is the bug report. If you agree with certain item in it, can you improve your solution so that it is complete and rigorous? Note that the evaluator who generates the bug report can misunderstand your solution and thus make mistakes. If you do not agree with certain item in the bug report, please add some detailed explanations to avoid such misunderstanding. Your new solution should strictly follow the instructions in the system prompt.
 """
@@ -350,25 +344,6 @@ def verify_solution(problem_statement, solution, verbose=True):
 
     if("yes" not in o.lower()):
         bug_report = extract_detailed_solution(out, "Detailed Verification", False)
-
-        """p2["contents"].append(
-            {"role": "model",
-            "parts": [{"text": bug_report}]
-            }
-        )
-        p2["contents"].append(
-            {"role": "user",
-            "parts": [{"text": check_verification_prompt}]
-            }
-        )
-
-        if(verbose):
-            print(">>>>>>> Review bug report prompt:")
-            print(json.dumps(p2["contents"][-2:], indent=4))
-
-        res = send_api_request(get_api_key(), p2)
-        out = extract_text_from_response(res) 
-    """
 
     if(verbose):
         print(">>>>>>>Bug report:")
