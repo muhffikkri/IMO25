@@ -5,6 +5,7 @@ A parallel AI agent system for solving International Mathematical Olympiad (IMO)
 ## Overview
 
 This project consists of two main components:
+
 - `agent.py`: A single AI agent that attempts to solve IMO problems
 - `run_parallel.py`: A parallel execution system that runs multiple agents simultaneously
 
@@ -36,13 +37,16 @@ python agent.py problem.txt [options]
 ```
 
 **Arguments:**
+
 - `problem.txt`: Path to the problem statement file (required); imo2025 problems are in `problems`
 
 **Options:**
+
 - `--log LOG_FILE`: Specify a log file for output (default: prints to console)
 - `--other_prompts PROMPTS`: Additional prompts separated by commas
 
 **Example:**
+
 ```bash
 python agent.py imo2025_p1.txt --log agent_output.log
 ```
@@ -56,9 +60,11 @@ python run_parallel.py problem.txt [options]
 ```
 
 **Arguments:**
+
 - `problem.txt`: Path to the problem statement file (required)
 
 **Options:**
+
 - `--num-agents N` or `-n N`: Number of parallel agents (default: 10)
 - `--log-dir DIR` or `-d DIR`: Directory for log files (default: logs)
 - `--timeout SECONDS` or `-t SECONDS`: Timeout per agent in seconds (default: no timeout)
@@ -66,6 +72,7 @@ python run_parallel.py problem.txt [options]
 - `--other_prompts PROMPTS` or `-o PROMPTS`: Additional prompts separated by commas
 
 **Examples:**
+
 ```bash
 # Run 20 agents with 5-minute timeout each
 python run_parallel.py imo2025_p1.txt -n 20 -t 300
@@ -78,16 +85,19 @@ python run_parallel.py imo2025_p1.txt -n 15 -o "focus_on_geometry,use_induction"
 ```
 
 ## Problem File Format
+
 See the `problems` folder.
 
 ## Output and Logging
 
 ### Single Agent
+
 - Output is printed to console by default
 - Use `--log` to save output to a file
 - The agent will indicate if a complete solution was found
 
 ### Parallel Execution
+
 - Each agent creates a separate log file in the specified directory
 - Progress is shown in real-time
 - Final summary shows:
@@ -100,9 +110,11 @@ See the `problems` folder.
 ## Understanding the Output
 
 ### Solution Detection
+
 The system looks for the phrase "Found a correct solution in run" to identify successful solutions.
 
 ### Agent Behavior
+
 - Agents use Google's Gemini 2.5 Pro model
 - Each agent follows a structured approach with multiple attempts
 - Solutions are verified for completeness and correctness
@@ -126,6 +138,7 @@ The system looks for the phrase "Found a correct solution in run" to identify su
 4. **No Solutions Found**: Try running more agents or check problem clarity
 
 ### Debug Mode
+
 Add verbose logging by modifying the agent code or check individual log files for detailed output.
 
 ## License
@@ -153,4 +166,4 @@ If you use this code in your research, please cite:
   journal={arXiv preprint arXiv:2507.15855},
   year={2025}
 }
-``` 
+```
